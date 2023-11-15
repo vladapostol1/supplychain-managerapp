@@ -1,0 +1,36 @@
+# Compiled class files
+backend/**/*.class
+
+# Maven build directory
+backend/target/
+
+# IntelliJ IDEA specific
+backend/.idea/
+backend/**/*.iml
+backend/**/*.ipr
+backend/**/*.iws
+
+# Package files
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# Dependency directory (uncomment if you wish to ignore)
+# backend/lib/
+
+# Log files
+backend/*.log
+backend/*.log.*
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Other unnecessary files
+*.swp
+*~
+backend/hs_err_pid*
