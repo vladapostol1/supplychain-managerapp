@@ -1,5 +1,3 @@
--- We are only adding Suppliers and Products
-
 INSERT INTO Suppliers (SupplierID, Name, ContactEmail, Address, Phone) VALUES (1, 'Sports Goods', 'sportsgoods@supplier.com', 'Str. Wowwoo, Mexico', '0767347447');
 INSERT INTO Suppliers (SupplierID, Name, ContactEmail, Address, Phone) VALUES (2, 'GamesForFun', 'gamesforfun@supplier.com', 'Str. Cantemir, Iasi', '0754532535');
 INSERT INTO Suppliers (SupplierID, Name, ContactEmail, Address, Phone) VALUES (3, 'PlayNow', 'playnow@supplier.com', 'Str. Locococo, Austin', '0785485848');
@@ -78,3 +76,19 @@ INSERT INTO Orders (OrderID, CustomerID, OrderDate, Status) VALUES (12, 4, TO_DA
 INSERT INTO Orders (OrderID, CustomerID, OrderDate, Status) VALUES (13, 5, TO_DATE('2023-01-13', 'YYYY-MM-DD'), 'Delivered');
 INSERT INTO Orders (OrderID, CustomerID, OrderDate, Status) VALUES (14, 5, TO_DATE('2023-01-15', 'YYYY-MM-DD'), 'Shipped');
 INSERT INTO Orders (OrderID, CustomerID, OrderDate, Status) VALUES (15, 5, TO_DATE('2023-01-17', 'YYYY-MM-DD'), 'Processing');
+
+INSERT INTO OrderDetails (OrderDetailID, OrderID, ProductID, Quantity, Price) VALUES (1, 1, 1, 2, 89);
+INSERT INTO OrderDetails (OrderDetailID, OrderID, ProductID, Quantity, Price) VALUES (2, 1, 3, 1, 244);
+INSERT INTO OrderDetails (OrderDetailID, OrderID, ProductID, Quantity, Price) VALUES (3, 2, 2, 3, 101);
+INSERT INTO OrderDetails (OrderDetailID, OrderID, ProductID, Quantity, Price) VALUES (4, 2, 5, 1, 50);
+INSERT INTO OrderDetails (OrderDetailID, OrderID, ProductID, Quantity, Price) VALUES (5, 3, 4, 2, 200);
+INSERT INTO OrderDetails (OrderDetailID, OrderID, ProductID, Quantity, Price) VALUES (6, 3, 6, 1, 300);
+INSERT INTO OrderDetails (OrderDetailID, OrderID, ProductID, Quantity, Price) VALUES (7, 4, 7, 1, 75);
+INSERT INTO OrderDetails (OrderDetailID, OrderID, ProductID, Quantity, Price) VALUES (8, 4, 8, 1, 40);
+INSERT INTO OrderDetails (OrderDetailID, OrderID, ProductID, Quantity, Price) VALUES (9, 5, 9, 1, 150);
+INSERT INTO OrderDetails (OrderDetailID, OrderID, ProductID, Quantity, Price) VALUES (10, 5, 10, 2, 120);
+INSERT INTO OrderDetails (OrderDetailID, OrderID, ProductID, Quantity, Price) VALUES (11, 6, 11, 1, 60);
+INSERT INTO OrderDetails (OrderDetailID, OrderID, ProductID, Quantity, Price) VALUES (12, 6, 12, 2, 30);
+INSERT INTO OrderDetails (OrderDetailID, OrderID, ProductID, Quantity, Price) VALUES (13, 7, 13, 1, 150);
+INSERT INTO OrderDetails (OrderDetailID, OrderID, ProductID, Quantity, Price) VALUES (14, 7, 14, 1, 70);
+INSERT INTO OrderDetails (OrderDetailID, OrderID, ProductID, Quantity, Price) VALUES (15, 8, 15, 2, 20);
