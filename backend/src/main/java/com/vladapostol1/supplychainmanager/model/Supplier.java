@@ -1,52 +1,42 @@
 package com.vladapostol1.supplychainmanager.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
-
+@Data
 @Entity
-public class Supplier implements Serializable {
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "SUPPLIERS")
+public class Supplier {
+
     @Id
-    @Getter
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false, updatable = false)
-    private Long SupplierID;
-    @Getter
-    @Setter
-    @Column(nullable = false)
-    private String Name;
-    @Getter
-    @Setter
-    @Column(nullable = false, unique = true)
-    private String ContactEmail;
-    @Getter
-    @Setter
-    @Column(nullable = false)
-    private String Address;
-    @Getter
-    @Setter
-    @Column(nullable = false, unique = true)
-    private String Phone;
+    @Column(name = "SUPPLIERID")
+    private int supplierID;
 
-    public Supplier() {}
+    @Column(name = "NAME", nullable = false, length = 100)
+    private String name;
 
-    public Supplier(String Name, String ContactEmail, String Address, String Phone) {
-        this.Name = Name;
-        this.ContactEmail = ContactEmail;
-        this.Address = Address;
-        this.Phone = Phone;
-    }
+    @Column(name = "CONTACTEMAIL", nullable = false, length = 100, unique = true)
+    private String contactEmail;
+
+    @Column(name = "ADDRESS", nullable = false, length = 200)
+    private String address;
+
+    @Column(name = "PHONE", nullable = false, length = 20, unique = true)
+    private String phone;
 
     @Override
     public String toString() {
         return "Supplier{"+
-                "\tSupplierID = " + SupplierID + "," +
-                "\tName = " + Name + "," +
-                "\tContactEmail = " + ContactEmail + "," +
-                "\tAddress = " + Address + "," +
-                "\tPhone = " + Phone + "," +
+                "\tSupplierID = " + supplierID + "," +
+                "\tName = " + name + "," +
+                "\tContactEmail = " + contactEmail + "," +
+                "\tAddress = " + address + "," +
+                "\tPhone = " + phone + "," +
                 "}";
     }
+
 }

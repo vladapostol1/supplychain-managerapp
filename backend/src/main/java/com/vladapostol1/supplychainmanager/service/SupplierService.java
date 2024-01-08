@@ -1,6 +1,6 @@
 package com.vladapostol1.supplychainmanager.service;
 
-import com.vladapostol1.supplychainmanager.exception.UserNotFoundException;
+import com.vladapostol1.supplychainmanager.exception.ResourceNotFoundException;
 import com.vladapostol1.supplychainmanager.model.Supplier;
 import com.vladapostol1.supplychainmanager.repo.SupplierRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,11 +29,12 @@ public class SupplierService {
         return supplierRepo.save(supplier);
     }
 
-    public Supplier findSupplierById(Long id) {
-        return supplierRepo.findSupplierById(id).orElseThrow(() -> new UserNotFoundException("Supplier by id "+ id + "was not found."));
+    public Supplier findSupplierById(int supplierID) {
+        return supplierRepo.findSupplierBySupplierID(supplierID)
+                .orElseThrow(() -> new ResourceNotFoundException("Supplier by ID " + supplierID + " was not found."));
     }
 
-    public void deleteSupplier(Long id) {
-        supplierRepo.deleteSupplierById(id);
+    public void deleteSupplier(int supplierID) {
+        supplierRepo.deleteSupplierBySupplierID(supplierID);
     }
 }
