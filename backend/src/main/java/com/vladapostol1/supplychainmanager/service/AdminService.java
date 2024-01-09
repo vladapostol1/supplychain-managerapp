@@ -2,14 +2,13 @@ package com.vladapostol1.supplychainmanager.service;
 
 import com.vladapostol1.supplychainmanager.exception.ResourceNotFoundException;
 import com.vladapostol1.supplychainmanager.model.Admin;
-import com.vladapostol1.supplychainmanager.model.Supplier;
 import com.vladapostol1.supplychainmanager.repo.AdminRepo;
-import com.vladapostol1.supplychainmanager.repo.SupplierRepo;
-import com.vladapostol1.supplychainmanager.utils.PasswordEncryption;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import static com.vladapostol1.supplychainmanager.utils.PasswordEncryption.encryptPasswordMD5;
 
+@Service
 public class AdminService {
     private final AdminRepo adminRepo;
 

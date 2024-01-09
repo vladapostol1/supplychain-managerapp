@@ -7,7 +7,6 @@ const Navbar = ({ setActivePanel }) => {
       <button onClick={() => setActivePanel('products')} className="p-4 hover:bg-gray-700">Products</button>
       <button onClick={() => setActivePanel('customers')} className="p-4 hover:bg-gray-700">Customers</button>
       <button onClick={() => setActivePanel('orders')} className="p-4 hover:bg-gray-700">Orders</button>
-      <button onClick={() => setActivePanel('orderDetails')} className="p-4 hover:bg-gray-700">Order Details</button>
     </div>
   );
 };

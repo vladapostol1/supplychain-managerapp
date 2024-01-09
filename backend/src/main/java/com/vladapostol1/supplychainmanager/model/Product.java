@@ -11,26 +11,26 @@ import java.math.BigDecimal;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "Products")
+@Table(name = "PRODUCTS")
 public class Product {
 
     @Id
-    @Column(name = "ProductID")
+    @Column(name = "PRODUCTID")
     private int productID;
 
-    @Column(name = "Name", nullable = false, length = 100)
+    @Column(name = "NAME", nullable = false, length = 100)
     private String name;
 
-    @Column(name = "Description", nullable = false, length = 300)
+    @Column(name = "DESCRIPTION", nullable = false, length = 300)
     private String description;
 
-    @Column(name = "Price", nullable = false)
+    @Column(name = "PRICE", nullable = false)
     private BigDecimal price;
 
-    @Column(name = "StockQuantity", nullable = false)
+    @Column(name = "STOCKQUANTITY", nullable = false)
     private int stockQuantity;
 
     @ManyToOne
-    @JoinColumn(name = "SupplierID", nullable = false)
+    @JoinColumn(name = "SUPPLIERID", nullable = false)
     private Supplier supplier;
 }
