@@ -18,8 +18,8 @@ public class AdminService {
     }
 
     public Admin findAdminByEmailAndPassword(String email, String password) {
-        String encryptedPassword = encryptPasswordMD5(password);
-        return adminRepo.findAdminByEmailAndPassword(email, encryptedPassword)
+        password = encryptPasswordMD5(password);
+        return adminRepo.findAdminByEmailAndPassword(email, password)
                 .orElseThrow(() -> new ResourceNotFoundException("Email or password wrong"));
     }
 }

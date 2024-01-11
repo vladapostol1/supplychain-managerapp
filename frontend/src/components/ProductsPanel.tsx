@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
 
-const AddProductsPopup = ({ onAdd, onClose }) => {
-    const [newProducts, setNewProducts] = useState({ name: '', contactEmail: '', address: '', phone: '' });
+const AddProductsPopup = ({ onAdd, onClose, suppliers }) => {
+        const [newProduct, setNewProduct] = useState({
+        name: '', description: '', price: '', stockQuantity: '', supplierId: ''
+    });
 
     const handleChange = (e) => {
-        setNewProducts({ ...newProducts, [e.target.name]: e.target.value });
+        setNewProduct({ ...newProduct, [e.target.name]: e.target.value });
     };
 
     const handleSubmit = () => {
-        onAdd(newProducts);
+        onAdd(newProduct);
     };
 
     return (
@@ -16,21 +18,35 @@ const AddProductsPopup = ({ onAdd, onClose }) => {
             <div className="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
                 <h3 className="text-lg font-semibold">Edit Products</h3>
                 <div className="mb-4">
-                    <label className="block">Name</label>
-                    <input type="text" name="name" value={newProducts.name} onChange={handleChange} className="w-full px-2 py-1 bg-gray-200 rounded-md" />
+                <label className="block">Name</label>
+                <input type="text" name="name" value={newProduct.name} onChange={handleChange} className="w-full px-2 py-1 bg-gray-200 rounded-md" />
                 </div>
                 <div className="mb-4">
-                    <label className="block">Contact Email</label>
-                    <input type="email" name="contactEmail" value={newProducts.contactEmail} onChange={handleChange} className="w-full px-2 py-1 bg-gray-200 rounded-md" />
+                    <label className="block">Description</label>
+                    <input type="email" name="description" value={newProduct.description} onChange={handleChange} className="w-full px-2 py-1 bg-gray-200 rounded-md" />
                 </div>
                 <div className="mb-4">
-                    <label className="block">Address</label>
-                    <input type="text" name="address" value={newProducts.address} onChange={handleChange} className="w-full px-2 py-1 bg-gray-200 rounded-md" />
+                    <label className="block">Price</label>
+                    <input type="text" name="price" value={newProduct.price} onChange={handleChange} className="w-full px-2 py-1 bg-gray-200 rounded-md" />
                 </div>
                 <div className="mb-4">
-                    <label className="block">Phone</label>
-                    <input type="text" name="phone" value={newProducts.phone} onChange={handleChange} className="w-full px-2 py-1 bg-gray-200 rounded-md" />
+                    <label className="block">Stock</label>
+                    <input type="text" name="stockQuantity" value={newProduct.stockQuantity} onChange={handleChange} className="w-full px-2 py-1 bg-gray-200 rounded-md" />
                 </div>
+                <label className="block">Supplier</label>
+                <select
+                    name="supplierId"
+                    value={newProduct.supplierId}
+                    onChange={handleChange}
+                    className="w-full px-2 py-1 bg-gray-200 rounded-md mb-4"
+                >
+                    <option value="">Select a Supplier</option>
+                    {suppliers.map(supplier => (
+                        <option key={supplier.supplierID} value={supplier.supplierID}>
+                            {supplier.name}
+                        </option>
+                    ))}
+                </select>
                 <div className='flex flex-row'>
                     <button onClick={handleSubmit} className='rounded-md mr-2 text-white my-2'>OK</button>
                     <button onClick={onClose} className='rounded-md mr-2 text-white my-2'>Cancel</button>
@@ -76,16 +92,16 @@ const UpdateProductsPopup = ({ products, onUpdate, onClose }) => {
                 <input type="text" name="name" value={updatedProducts.name} onChange={handleChange} className="w-full px-2 py-1 bg-gray-200 rounded-md" />
             </div>
             <div className="mb-4">
-                <label className="block">Contact Email</label>
-                <input type="email" name="contactEmail" value={updatedProducts.contactEmail} onChange={handleChange} className="w-full px-2 py-1 bg-gray-200 rounded-md" />
+                <label className="block">Description</label>
+                <input type="email" name="description" value={updatedProducts.description} onChange={handleChange} className="w-full px-2 py-1 bg-gray-200 rounded-md" />
             </div>
             <div className="mb-4">
-                <label className="block">Address</label>
-                <input type="text" name="address" value={updatedProducts.address} onChange={handleChange} className="w-full px-2 py-1 bg-gray-200 rounded-md" />
+                <label className="block">Price</label>
+                <input type="text" name="price" value={updatedProducts.price} onChange={handleChange} className="w-full px-2 py-1 bg-gray-200 rounded-md" />
             </div>
             <div className="mb-4">
-                <label className="block">Phone</label>
-                <input type="text" name="phone" value={updatedProducts.phone} onChange={handleChange} className="w-full px-2 py-1 bg-gray-200 rounded-md" />
+                <label className="block">Stock</label>
+                <input type="text" name="stockQuantity" value={updatedProducts.stockQuantity} onChange={handleChange} className="w-full px-2 py-1 bg-gray-200 rounded-md" />
             </div>
             <div className='flex flex-row'>
                 <button onClick={handleSubmit} className='rounded-md mr-2 text-white my-2'>OK</button>
@@ -98,6 +114,7 @@ const UpdateProductsPopup = ({ products, onUpdate, onClose }) => {
 
 const ProductsPanel = () => {
   const [products, setProductss] = useState([]);
+  const [suppliers, setSuppliers] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [editingProducts, setEditingProducts] = useState(null);
@@ -117,6 +134,11 @@ const ProductsPanel = () => {
     fetch('http://localhost:8080/product/all')
       .then(response => response.json())
       .then(data => setProductss(data))
+      .catch(error => setError(error));
+
+      fetch('http://localhost:8080/supplier/all')
+      .then(response => response.json())
+      .then(data => setSuppliers(data))
       .catch(error => setError(error));
   }, []);
 
@@ -183,7 +205,7 @@ const ProductsPanel = () => {
       </table>
       {editingProducts != null && <UpdateProductsPopup products={editingProducts} onUpdate={handleUpdate} onClose={() => setEditingProducts(null)} />}
       {deletingProductsId != null && <DeleteProductsPopup productsId={deletingProductsId} onDelete={handleDelete} onClose={() => setDeletingProductsId(null)} />}
-      {showAddPopup && <AddProductsPopup onAdd={handleAdd} onClose={() => setShowAddPopup(false)} />}
+      {showAddPopup && <AddProductsPopup onAdd={handleAdd} onClose={() => setShowAddPopup(false)} suppliers={suppliers}/>}
     </div>
         <button onClick={() => setShowAddPopup(true)}  className='rounded-md px-4 py-2 button-light mt-8'>Add Products</button>
     </div>

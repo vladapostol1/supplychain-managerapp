@@ -55,11 +55,11 @@ INSERT INTO Products (Name, Description, Price, StockQuantity, SupplierID) VALUE
 INSERT INTO Products (Name, Description, Price, StockQuantity, SupplierID) VALUES ('Ochelari de soare', 'Ochelari pentru protectie UV', 70, 110, 5);
 INSERT INTO Products (Name, Description, Price, StockQuantity, SupplierID) VALUES ('GPS pentru biciclete', 'Dispozitiv GPS pentru trasee', 200, 40, 5);
 
-INSERT INTO Customers (FirstName, LastName, Email, Password, Address, Phone) VALUES ('John', 'Doe', 'john@example.com', 'a8c054e6b5e3edf349c1dac58157d1cd', '1234 Main St', '555-1234');
-INSERT INTO Customers (FirstName, LastName, Email, Password, Address, Phone) VALUES ('Jane', 'Smith', 'jane@example.com', 'd37630caf1acab6433dd4a8f620b5562', '5678 Main St', '555-5678');
-INSERT INTO Customers (FirstName, LastName, Email, Password, Address, Phone) VALUES ('Alice', 'Johnson', 'alice@example.com', '3d7b3b8353bd6731e92af86e98995929', '9101 Main St', '555-9101');
-INSERT INTO Customers (FirstName, LastName, Email, Password, Address, Phone) VALUES ('Bob', 'Brown', 'bob@example.com', 'd4b71fbeaa70fcbd2099df998ebd301e', '3456 Second St', '555-3456');
-INSERT INTO Customers (FirstName, LastName, Email, Password, Address, Phone) VALUES ('Carol', 'Davis', 'carol@example.com', '7cc5d7ea3392134fa67542deb8137117', '7890 Third St', '555-7890');
+INSERT INTO Customers (FirstName, LastName, Email, Address, Phone) VALUES ('John', 'Doe', 'john@example.com', '1234 Main St', '555-1234');
+INSERT INTO Customers (FirstName, LastName, Email, Address, Phone) VALUES ('Jane', 'Smith', 'jane@example.com', '5678 Main St', '555-5678');
+INSERT INTO Customers (FirstName, LastName, Email, Address, Phone) VALUES ('Alice', 'Johnson', 'alice@example.com', '9101 Main St', '555-9101');
+INSERT INTO Customers (FirstName, LastName, Email, Address, Phone) VALUES ('Bob', 'Brown', 'bob@example.com', '3456 Second St', '555-3456');
+INSERT INTO Customers (FirstName, LastName, Email, Address, Phone) VALUES ('Carol', 'Davis', 'carol@example.com', '7890 Third St', '555-7890');
 
 INSERT INTO Orders (CustomerID, OrderDate, Status) VALUES (1, TO_DATE('2023-01-01', 'YYYY-MM-DD'), 'Delivered');
 INSERT INTO Orders (CustomerID, OrderDate, Status) VALUES (1, TO_DATE('2023-01-03', 'YYYY-MM-DD'), 'Shipped');
@@ -77,18 +77,18 @@ INSERT INTO Orders (CustomerID, OrderDate, Status) VALUES (5, TO_DATE('2023-01-1
 INSERT INTO Orders (CustomerID, OrderDate, Status) VALUES (5, TO_DATE('2023-01-15', 'YYYY-MM-DD'), 'Shipped');
 INSERT INTO Orders (CustomerID, OrderDate, Status) VALUES (5, TO_DATE('2023-01-17', 'YYYY-MM-DD'), 'Processing');
 
-INSERT INTO OrderDetails (OrderID, ProductID, Quantity, Price) VALUES (1, 1, 2, 89);
-INSERT INTO OrderDetails (OrderID, ProductID, Quantity, Price) VALUES (1, 3, 1, 244);
-INSERT INTO OrderDetails (OrderID, ProductID, Quantity, Price) VALUES (2, 2, 3, 101);
-INSERT INTO OrderDetails (OrderID, ProductID, Quantity, Price) VALUES (2, 5, 1, 50);
-INSERT INTO OrderDetails (OrderID, ProductID, Quantity, Price) VALUES (3, 4, 2, 200);
-INSERT INTO OrderDetails (OrderID, ProductID, Quantity, Price) VALUES (3, 6, 1, 300);
-INSERT INTO OrderDetails (OrderID, ProductID, Quantity, Price) VALUES (4, 7, 1, 75);
-INSERT INTO OrderDetails (OrderID, ProductID, Quantity, Price) VALUES (4, 8, 1, 40);
-INSERT INTO OrderDetails (OrderID, ProductID, Quantity, Price) VALUES (5, 9, 1, 150);
-INSERT INTO OrderDetails (OrderID, ProductID, Quantity, Price) VALUES (5, 10, 2, 120);
-INSERT INTO OrderDetails (OrderID, ProductID, Quantity, Price) VALUES (6, 11, 1, 60);
-INSERT INTO OrderDetails (OrderID, ProductID, Quantity, Price) VALUES (6, 12, 2, 30);
-INSERT INTO OrderDetails (OrderID, ProductID, Quantity, Price) VALUES (7, 13, 1, 150);
-INSERT INTO OrderDetails (OrderID, ProductID, Quantity, Price) VALUES (7, 14, 1, 70);
-INSERT INTO OrderDetails (OrderID, ProductID, Quantity, Price) VALUES (8, 15, 2, 20);
+INSERT INTO OrderDetails (OrderID, ProductID, Quantity, Price) VALUES (1, 1, 1, 89);
+INSERT INTO OrderDetails (OrderID, ProductID, Quantity, Price) VALUES (2, 3, 1, 244);
+INSERT INTO OrderDetails (OrderID, ProductID, Quantity, Price) VALUES (3, 2, 3, 101);
+INSERT INTO OrderDetails (OrderID, ProductID, Quantity, Price) VALUES (4, 5, 1, 50);
+INSERT INTO OrderDetails (OrderID, ProductID, Quantity, Price) VALUES (5, 4, 2, 200);
+INSERT INTO OrderDetails (OrderID, ProductID, Quantity, Price) VALUES (6, 6, 1, 300);
+INSERT INTO OrderDetails (OrderID, ProductID, Quantity, Price) VALUES (7, 7, 1, 75);
+INSERT INTO OrderDetails (OrderID, ProductID, Quantity, Price) VALUES (8, 8, 1, 40);
+INSERT INTO OrderDetails (OrderID, ProductID, Quantity, Price) VALUES (9, 9, 1, 150);
+INSERT INTO OrderDetails (OrderID, ProductID, Quantity, Price) VALUES (10, 10, 2, 120);
+INSERT INTO OrderDetails (OrderID, ProductID, Quantity, Price) VALUES (11, 11, 1, 60);
+INSERT INTO OrderDetails (OrderID, ProductID, Quantity, Price) VALUES (12, 12, 2, 30);
+INSERT INTO OrderDetails (OrderID, ProductID, Quantity, Price) VALUES (13, 13, 1, 150);
+INSERT INTO OrderDetails (OrderID, ProductID, Quantity, Price) VALUES (14, 14, 1, 70);
+INSERT INTO OrderDetails (OrderID, ProductID, Quantity, Price) VALUES (15, 15, 2, 20);

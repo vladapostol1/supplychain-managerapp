@@ -1,5 +1,6 @@
 package com.vladapostol1.supplychainmanager;
 
+import com.vladapostol1.supplychainmanager.dto.OrderDTO;
 import com.vladapostol1.supplychainmanager.model.Order;
 import com.vladapostol1.supplychainmanager.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,9 +33,9 @@ public class OrderResource {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<Order> addOrder(@RequestBody Order order) {
-        Order newOrder = orderService.addOrder(order);
-        return new ResponseEntity<>(newOrder, HttpStatus.CREATED);
+    public ResponseEntity<Order> addOrder(@RequestBody OrderDTO orderDTO) {
+        Order order = orderService.createOrder(orderDTO);
+        return new ResponseEntity<>(order, HttpStatus.CREATED);
     }
 
     @PutMapping("/update")

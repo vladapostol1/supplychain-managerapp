@@ -3,6 +3,7 @@ package com.vladapostol1.supplychainmanager.service;
 import com.vladapostol1.supplychainmanager.exception.ResourceNotFoundException;
 import com.vladapostol1.supplychainmanager.model.Customer;
 import com.vladapostol1.supplychainmanager.repo.CustomerRepo;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,6 +35,7 @@ public class CustomerService {
                 .orElseThrow(() -> new ResourceNotFoundException("Customer by ID " + customerID + " was not found."));
     }
 
+    @Transactional
     public void deleteCustomer(int customerID) {
         customerRepo.deleteCustomerByCustomerID(customerID);
     }

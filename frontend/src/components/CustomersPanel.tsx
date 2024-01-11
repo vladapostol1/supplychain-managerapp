@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 const AddCustomerPopup = ({ onAdd, onClose }) => {
-    const [newCustomer, setNewCustomer] = useState({ name: '', contactEmail: '', address: '', phone: '' });
+    const [newCustomer, setNewCustomer] = useState({ firstName: '', lastName: '',email: '', address: '', phone: '' });
 
     const handleChange = (e) => {
         setNewCustomer({ ...newCustomer, [e.target.name]: e.target.value });
@@ -14,14 +14,18 @@ const AddCustomerPopup = ({ onAdd, onClose }) => {
     return (
         <div className="fixed inset-0 bg-black bg-opacity-50 overflow-y-auto h-full w-full text-black">
             <div className="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
-                <h3 className="text-lg font-semibold">Edit Customer</h3>
+                <h3 className="text-lg font-semibold">Add Customer</h3>
                 <div className="mb-4">
-                    <label className="block">Name</label>
-                    <input type="text" name="name" value={newCustomer.name} onChange={handleChange} className="w-full px-2 py-1 bg-gray-200 rounded-md" />
+                    <label className="block">First Name</label>
+                    <input type="text" name="firstName" value={newCustomer.firstName} onChange={handleChange} className="w-full px-2 py-1 bg-gray-200 rounded-md" />
+                </div>
+                <div className="mb-4">
+                    <label className="block">Last Name</label>
+                    <input type="text" name="lastName" value={newCustomer.lastName} onChange={handleChange} className="w-full px-2 py-1 bg-gray-200 rounded-md" />
                 </div>
                 <div className="mb-4">
                     <label className="block">Contact Email</label>
-                    <input type="email" name="contactEmail" value={newCustomer.contactEmail} onChange={handleChange} className="w-full px-2 py-1 bg-gray-200 rounded-md" />
+                    <input type="email" name="email" value={newCustomer.email} onChange={handleChange} className="w-full px-2 py-1 bg-gray-200 rounded-md" />
                 </div>
                 <div className="mb-4">
                     <label className="block">Address</label>
@@ -70,14 +74,10 @@ const UpdateCustomerPopup = ({ customer, onUpdate, onClose }) => {
     return (
         <div className="fixed inset-0 bg-black bg-opacity-50 overflow-y-auto h-full w-full text-black">
           <div className="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
-            <h3 className="text-lg font-semibold">Add Customer</h3>
-            <div className="mb-4">
-                <label className="block">Name</label>
-                <input type="text" name="name" value={updatedCustomer.name} onChange={handleChange} className="w-full px-2 py-1 bg-gray-200 rounded-md" />
-            </div>
+            <h3 className="text-lg font-semibold">Edit Customer</h3>
             <div className="mb-4">
                 <label className="block">Contact Email</label>
-                <input type="email" name="contactEmail" value={updatedCustomer.contactEmail} onChange={handleChange} className="w-full px-2 py-1 bg-gray-200 rounded-md" />
+                <input type="email" name="email" value={updatedCustomer.email} onChange={handleChange} className="w-full px-2 py-1 bg-gray-200 rounded-md" />
             </div>
             <div className="mb-4">
                 <label className="block">Address</label>

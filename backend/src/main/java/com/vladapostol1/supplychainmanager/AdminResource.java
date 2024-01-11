@@ -1,5 +1,6 @@
 package com.vladapostol1.supplychainmanager;
 
+import com.vladapostol1.supplychainmanager.dto.AdminLoginDTO;
 import com.vladapostol1.supplychainmanager.model.Admin;
 import com.vladapostol1.supplychainmanager.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +18,14 @@ public class AdminResource {
         this.adminService = adminService;
     }
 
-    @GetMapping("/find/{email}/{pass}")
-    public ResponseEntity<Admin> getOrderById(@PathVariable("email") String email,@PathVariable("pass") String password ) {
-        Admin admin = adminService.findAdminByEmailAndPassword(email, password);
-        return new ResponseEntity<>(admin, HttpStatus.OK);
+    @PostMapping("/login")
+    public ResponseEntity<Admin> login(@RequestBody AdminLoginDTO loginDto) {
+        Admin admin = adminService.findAdminByEmailAndPassword(loginDto.getEmail(), loginDto.getPassword());
+
+        if (admin != null) {
+            return new ResponseEntity<>(admin, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
     }
 }
