@@ -25,24 +25,34 @@ function Login({ setAuth }) {
   };
 
   return (
-    <div className="login-container">
-      <form onSubmit={handleSubmit}>
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="Email"
-          required
-        />
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="Password"
-          required
-        />
-        <button type="submit">Login</button>
-      </form>
+    <div className="flex justify-center items-center min-h-screen bg-stone-800 w-screen">
+      <div className="bg-stone-900 shadow-lg rounded-md p-8 w-full max-w-sm">
+        <h2 className="text-white font-bold text-3xl text-center mb-8">LOG IN</h2>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Email"
+            required
+            className="w-full p-3 mb-4 bg-stone-800 text-white rounded-md"
+          />
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Password"
+            required
+            className="w-full p-3 mb-4 bg-stone-800 text-white rounded-md"
+          />
+          <button
+            type="submit"
+            className="w-full bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+          >
+            Login
+          </button>
+        </form>
+      </div>
     </div>
   );
 }
