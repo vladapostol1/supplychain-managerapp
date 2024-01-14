@@ -76,8 +76,6 @@ const NewOrderPage = () => {
                 orderDate: formattedDate,
                 status: 'Processing'
             };
-
-            console.log(orderData)
     
             const orderResponse = await fetch('http://localhost:8080/order/add', {
                 method: 'POST',
@@ -92,14 +90,27 @@ const NewOrderPage = () => {
                 quantity: quantity,
                 price: totalPrice
             };
-
-            console.log(orderDetailData);
     
             await fetch('http://localhost:8080/orderdetail/add', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(orderDetailData)
             });
+            
+            const selectedProduct = products.find(p => p.productID == selectedProductId)
+
+            if (selectedProduct && selectedProduct.stockQuantity) {
+                const newQuantity = selectedProduct.stockQuantity - quantity;
+                const updatedProduct = {
+                    ...selectedProduct,
+                    stockQuantity: newQuantity
+                };
+    
+                await fetch(`http://localhost:8080/product/update`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(updatedProduct)
+                });}
     
         } catch (error) {
             setError(error);

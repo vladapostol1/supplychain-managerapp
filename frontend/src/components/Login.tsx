@@ -1,8 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 function Login({ setAuth }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  useEffect(() => {
+    // Check if user is authenticated on component mount
+    const authStatus = localStorage.getItem('isAuthenticated') == 'true';
+    setAuth(authStatus);
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -16,6 +22,7 @@ function Login({ setAuth }) {
       if (response.ok) {
         const admin = await response.json();
         setAuth(true);
+        localStorage.setItem('isAuthenticated', 'true');
       } else {
         console.error("Login failed");
       }
